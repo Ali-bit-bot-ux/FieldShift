@@ -1,0 +1,53 @@
+{
+  "status": "success",
+  "climate_context": {
+    "nasa_smap_moisture_m3m3": 0.18,
+    "nasa_gldas_evapotranspiration_mm": 410.0,
+    "nasa_imerg_precipitation_mm": 285.0,
+    "climate_stress_level": "MODERATE_DROUGHT"
+  },
+  "strategies": [
+    {
+      "strategy_id": "recommended",
+      "title_ru": "Сбалансированная ротация NASA FieldShift",
+      "title_kk": "NASA FieldShift теңгерімді ауыспалы егісі",
+      "summary_score": 86.4,
+      "water_saved_percent": 34.0,
+      "soil_health_delta": "+18%",
+      "rotation_years": [
+        {"year": 1, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая", "crop_name_kk": "Жаздық бидай", "water_demand_mm": 380, "soil_health_score": 65, "nitrogen_balance_kg_ha": -25, "rationale_ru": "Стартовая коммерческая культура с высоким сбытом.", "rationale_kk": "Нарықтағы жоғары сұранысқа ие бастапқы коммерциялық дақыл."},
+        {"year": 2, "crop_id": "chickpea", "crop_name_ru": "Нут засухоустойчивый", "crop_name_kk": "Құрғақшылыққа төзімді нут", "water_demand_mm": 240, "soil_health_score": 78, "nitrogen_balance_kg_ha": 35, "rationale_ru": "Азотфиксация и разрыв цикла злаковых болезней.", "rationale_kk": "Азот байыту және аурулар циклін үзу."},
+        {"year": 3, "crop_id": "flax_linseed", "crop_name_ru": "Лен масличный", "crop_name_kk": "Майлы зығыр", "water_demand_mm": 290, "soil_health_score": 74, "nitrogen_balance_kg_ha": -10, "rationale_ru": "Стержневой корень улучшает структуру пахотного слоя.", "rationale_kk": "Кіндік тамыр топырақ құрылымын жақсартады."},
+        {"year": 4, "crop_id": "spring_barley", "crop_name_ru": "Ячмень яровой + No-Till стерня", "crop_name_kk": "Жаздық арпа + No-Till сабан", "water_demand_mm": 280, "soil_health_score": 83, "nitrogen_balance_kg_ha": -15, "rationale_ru": "Снегозадержание высокой стерней перед новым циклом.", "rationale_kk": "Жаңа цикл алдында биік сабанмен қар тоқтату."}
+      ]
+    },
+    {
+      "strategy_id": "soil_resilience",
+      "title_ru": "Максимум восстановления почвы",
+      "title_kk": "Топырақты максималды қалпына келтіру",
+      "summary_score": 78.2,
+      "water_saved_percent": 27.0,
+      "soil_health_delta": "+24%",
+      "rotation_years": [
+        {"year": 1, "crop_id": "chickpea", "crop_name_ru": "Нут", "crop_name_kk": "Ноқат", "water_demand_mm": 240, "soil_health_score": 74, "nitrogen_balance_kg_ha": 35, "rationale_ru": "Азотфиксация и минимальная нагрузка на влагу.", "rationale_kk": "Азот байыту және ылғалға аз жүктеме."},
+        {"year": 2, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая по No-Till", "crop_name_kk": "No-Till жаздық бидай", "water_demand_mm": 360, "soil_health_score": 72, "nitrogen_balance_kg_ha": -20, "rationale_ru": "Коммерческий год после азотфиксатора.", "rationale_kk": "Азотфиксатордан кейінгі коммерциялық жыл."},
+        {"year": 3, "crop_id": "alfalfa", "crop_name_ru": "Люцерна", "crop_name_kk": "Жоңышқа", "water_demand_mm": 420, "soil_health_score": 88, "nitrogen_balance_kg_ha": 45, "rationale_ru": "Глубокая корневая система разуплотняет почву.", "rationale_kk": "Терең тамыр топырақты қопылайды."},
+        {"year": 4, "crop_id": "spring_barley", "crop_name_ru": "Ячмень яровой", "crop_name_kk": "Жаздық арпа", "water_demand_mm": 280, "soil_health_score": 84, "nitrogen_balance_kg_ha": -10, "rationale_ru": "Короткий вегетационный период после люцерны.", "rationale_kk": "Жоңышқадан кейінгі қысқа вегетация кезеңі."}
+      ]
+    },
+    {
+      "strategy_id": "traditional_risk",
+      "title_ru": "Традиционная монокультура",
+      "title_kk": "Дәстүрлі монокультура",
+      "summary_score": 48.6,
+      "water_saved_percent": 0.0,
+      "soil_health_delta": "-21%",
+      "rotation_years": [
+        {"year": 1, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая", "crop_name_kk": "Жаздық бидай", "water_demand_mm": 380, "soil_health_score": 62, "nitrogen_balance_kg_ha": -25, "rationale_ru": "Контрольный коммерческий сценарий.", "rationale_kk": "Бақылау коммерциялық сценарийі."},
+        {"year": 2, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая", "crop_name_kk": "Жаздық бидай", "water_demand_mm": 380, "soil_health_score": 55, "nitrogen_balance_kg_ha": -28, "rationale_ru": "Повторный посев увеличивает корневые болезни.", "rationale_kk": "Қайталанған егу тамыр ауруларын күшейтеді."},
+        {"year": 3, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая", "crop_name_kk": "Жаздық бидай", "water_demand_mm": 380, "soil_health_score": 47, "nitrogen_balance_kg_ha": -31, "rationale_ru": "Истощение азота и рост сорной нагрузки.", "rationale_kk": "Азот тапшылығы және арамшөп жүктемесі."},
+        {"year": 4, "crop_id": "spring_wheat", "crop_name_ru": "Пшеница яровая", "crop_name_kk": "Жаздық бидай", "water_demand_mm": 380, "soil_health_score": 39, "nitrogen_balance_kg_ha": -34, "rationale_ru": "Высокий риск корневых гнилей и потерь урожая.", "rationale_kk": "Тамыр шірігі мен өнім жоғалту қаупі жоғары."}
+      ]
+    }
+  ]
+}

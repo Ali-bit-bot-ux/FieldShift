@@ -1,0 +1,54 @@
+{
+  "schema_version": "fieldshift.rotation_rules/1",
+  "notes": "Starter rules. Backend 2 owns and must extend/validate this file.",
+  "crops": [
+    "spring_wheat", "winter_wheat", "spring_barley", "oats", "maize_corn",
+    "millet", "sorghum", "sunflower", "safflower", "spring_rapeseed",
+    "flax_linseed", "chickpea", "lentil", "pea", "alfalfa", "cotton"
+  ],
+  "nitrogen_fixers": ["chickpea", "lentil", "pea", "alfalfa"],
+  "rules": [
+    {
+      "crop_id": "spring_wheat",
+      "max_consecutive_years": 2,
+      "reason": "Root rot and disease pressure increase in continuous wheat"
+    },
+    {
+      "crop_id": "winter_wheat",
+      "max_consecutive_years": 2,
+      "reason": "Root rot and disease pressure increase in continuous wheat"
+    },
+    {
+      "crop_id": "spring_barley",
+      "max_consecutive_years": 2,
+      "reason": "Barley disease carry-over"
+    },
+    {
+      "crop_id": "sunflower",
+      "min_return_interval_years": 4,
+      "reason": "Deep taproot depletes soil moisture below 2 m"
+    },
+    {
+      "crop_id": "flax_linseed",
+      "min_return_interval_years": 3,
+      "reason": "Disease and soil structure pressure"
+    },
+    {
+      "crop_id": "cotton",
+      "min_return_interval_years": 3,
+      "reason": "High nutrient and water demand"
+    }
+  ],
+  "nitrogen_fixation_kg_ha": {
+    "chickpea": 35,
+    "lentil": 30,
+    "pea": 25,
+    "alfalfa": 45
+  },
+  "soil_health_delta": {
+    "nitrogen_fixer": 12,
+    "grass_monoculture": -8,
+    "deep_exhauster": -6,
+    "no_till": 5
+  }
+}

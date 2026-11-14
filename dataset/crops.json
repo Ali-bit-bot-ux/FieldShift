@@ -1,0 +1,571 @@
+[
+  {
+    "id": "spring_wheat",
+    "name_ru": "Пшеница яровая (мягкая и твердая)",
+    "latin_name": "Triticum aestivum / durum",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 3,
+    "drought_mechanism": "Экономное расходование влаги, закрытие устьиц при жаре, синтез пролина",
+    "root_depth_meters": "1.2 - 1.6",
+    "root_type": "мочковатая",
+    "transpiration_coefficient": "400 - 500 л/кг СВ",
+    "critical_water_phases": [
+      "кущение (закладка колосковых бугорков)",
+      "выход в трубку (формирование числа зерен в колосе)",
+      "колошение - цветение",
+      "налив зерна (молочная спелость)"
+    ],
+    "wilting_threshold_swc_percent": 35,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary",
+      "chestnut_dark_light"
+    ],
+    "risk_soil_types": [
+      "sandy_arenosol",
+      "solonchak_solonetz"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Скручивание верхних листьев в трубочку («стрелкование»), посинение листьев, усыхание нижних ярусов, череззерница и щуплость зерна",
+    "name_kk": "Жаздық бидай (жұмсақ және қатты түрлері)",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "Ылғалды үнемді жұмсау, ыстық кезде жапырақтағы ауа тесіктерін (стомаларды) жабу, пролин синтездеу",
+    "root_type_kk": "шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "түптену (бас түйіншелерінің салынуы)",
+      "сабаққа шығу (бастағы дән санының қалыптасуы)",
+      "бас шығару – гүлдеу",
+      "дән толысу (сүт жетілуі)"
+    ],
+    "drought_symptoms_kk": "Жоғарғы жапырақшалардың түтікше болып оралып «жебеге» айналуы, жапырақтардың көгілдірленуі, төменгі қабаттардағы жапырақтардың курауы, бастың сирек данды (кеусік) болуы және дәнінің толмай бозалуы"
+  },
+  {
+    "id": "winter_wheat",
+    "name_ru": "Пшеница озимая",
+    "latin_name": "Triticum aestivum",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 3.5,
+    "drought_mechanism": "Уход от раннелетней засухи за счет быстрого весеннего старта на зимне-весенней влаге",
+    "root_depth_meters": "1.5 - 2.0",
+    "root_type": "мочковатая",
+    "transpiration_coefficient": "380 - 450 л/кг СВ",
+    "critical_water_phases": [
+      "осеннее кущение (до ухода в зиму)",
+      "ранневесеннее возобновление вегетации",
+      "колошение и цветение"
+    ],
+    "wilting_threshold_swc_percent": 30,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary",
+      "chestnut_dark_light",
+      "sierozem_calcareous"
+    ],
+    "risk_soil_types": [
+      "sandy_arenosol",
+      "solonchak_solonetz"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Преждевременное пожелтение флагового листа, стекание зерна, короткий колос",
+    "name_kk": "Қысқы бидай",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "Қысқы-көктемгі ылғал есебінен көктемде тез бой алып, жаздың ерте кезеңіндегі құрғақшылықтан аулақ болу",
+    "root_type_kk": "шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "күзгі түптену (қысқа кіргенге дейін)",
+      "ерте көктемде вегетацияның қайта жандануы",
+      "бас шығару және гүлдеу"
+    ],
+    "drought_symptoms_kk": "Байрақ жапырақтың мерзімінен бұрын сарғалуы, дәнінің толмай ағып-төгілуі, бастың қысқа болуы"
+  },
+  {
+    "id": "spring_barley",
+    "name_ru": "Ячмень яровой",
+    "latin_name": "Hordeum vulgare",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 4,
+    "drought_mechanism": "Короткий вегетационный период, раннее завершение налива зерна до наступления пика суховеев",
+    "root_depth_meters": "1.0 - 1.3",
+    "root_type": "мочковатая",
+    "transpiration_coefficient": "350 - 420 л/кг СВ",
+    "critical_water_phases": [
+      "выход в трубку",
+      "колошение"
+    ],
+    "wilting_threshold_swc_percent": 30,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "chernozem_southern_ordinary",
+      "sierozem_calcareous"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.1,
+    "drought_symptoms": "Опадение остей, пустоколосица, снижение массы 1000 семян",
+    "name_kk": "Жаздық арпа",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "Вегетация кезеңінің қысқалығы, құрғақ желдің (сухей) шарықтау кезеңі келмей тұрып дәнінің толысуын ерте аяқтау",
+    "root_type_kk": "шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "сабаққа шығу",
+      "бас шығару"
+    ],
+    "drought_symptoms_kk": "Қықтарының (остяның) түсіп қалуы, бастың бос (дансыз) болуы, 1000 дәнінің салмағының азаюы"
+  },
+  {
+    "id": "oats",
+    "name_ru": "Овес посевной",
+    "latin_name": "Avena sativa",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 2.5,
+    "drought_mechanism": "Сравнительно влаголюбивая культура среди колосовых, высокая транспирация",
+    "root_depth_meters": "1.0 - 1.4",
+    "root_type": "мочковатая",
+    "transpiration_coefficient": "450 - 550 л/кг СВ",
+    "critical_water_phases": [
+      "за 10-14 дней до выметывания метелки",
+      "цветение"
+    ],
+    "wilting_threshold_swc_percent": 40,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary"
+    ],
+    "risk_soil_types": [
+      "chestnut_dark_light",
+      "solonchak_solonetz",
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Белоколосица (захват овса), отмирание верхних веточек метелки, резкое снижение завязываемости",
+    "name_kk": "Салоқ (егістік салоқ)",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "Басты астық дақылдарының ішінде ылғалды сүйгіш дақыл, транспирациясы жоғары",
+    "root_type_kk": "шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "шашақ шығарудан 10-14 күн бұрын",
+      "гүлдеу"
+    ],
+    "drought_symptoms_kk": "Ақбастылық (сәлі шашағының ақарып бос қалуы), шашақтың жоғарғы тармақшаларының өлуі, түйін байланысудың күрт азаюы"
+  },
+  {
+    "id": "maize_corn",
+    "name_ru": "Кукуруза на зерно и силос",
+    "latin_name": "Zea mays",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 3,
+    "drought_mechanism": "C4-тип фотосинтеза (высокая эффективность использования воды на единицу биомассы), но высокая листовая площадь",
+    "root_depth_meters": "1.8 - 2.5",
+    "root_type": "мочковатая, ярусная с воздушными корнями",
+    "transpiration_coefficient": "250 - 350 л/кг СВ",
+    "critical_water_phases": [
+      "за 10 дней до выметывания метелки",
+      "цветение и оплодотворение початков (выход рылец)",
+      "молочно-восковая спелость"
+    ],
+    "wilting_threshold_swc_percent": 45,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary",
+      "sierozem_calcareous",
+      "alluvial_meadow"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol",
+      "brown_semi_desert"
+    ],
+    "fao_kc_coefficient": 1.2,
+    "drought_symptoms": "«Скручивание листьев в сигары», задержка выхода шелковистых нитей рылец (асинхронность с пыльцой), череззерница початка",
+    "name_kk": "Жүгері (данға және силосқа)",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "C4 типтес фотосинтез (бірлік биомассаға шаққанда суды жоғары тиімді пайдалану), бірақ жапырақ ауданы үлкен",
+    "root_type_kk": "шашыраңқы, қабатты орналасқан, ауа тамырлары бар",
+    "critical_water_phases_kk": [
+      "шашақ шығарудан 10 күн бұрын",
+      "гүлдеу және жүгері башының ұрықтануы (жібек тәрізді бағаналардың шығуы)",
+      "сүт-балауыз жетілу кезеңі"
+    ],
+    "drought_symptoms_kk": "Жапырақтардың «сигара» тәрізді оралып жиырылуы, жібек тәрізді бағаналардың кеш шығуы (гүл шаңымен уақыт сай келмеуі), жүгері башының данға толмай сирек болуы"
+  },
+  {
+    "id": "millet",
+    "name_ru": "Просо обыкновенное",
+    "latin_name": "Panicum miliaceum",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 4.8,
+    "drought_mechanism": "C4-фотосинтез, способность впадать в анабиозный покой во время жары и возобновлять рост после осадков",
+    "root_depth_meters": "1.0 - 1.3",
+    "root_type": "мочковатая",
+    "transpiration_coefficient": "200 - 280 л/кг СВ",
+    "critical_water_phases": [
+      "выметывание метелки - цветение"
+    ],
+    "wilting_threshold_swc_percent": 25,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "chernozem_southern_ordinary",
+      "brown_semi_desert"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz"
+    ],
+    "fao_kc_coefficient": 1.0,
+    "drought_symptoms": "Ограничение кущения, засыхание верхушек листьев (легко переносит кратковременную засуху)",
+    "name_kk": "Кәдімгі тары",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "C4 фотосинтезі, ыстық кезде анабиозға (ұйқы тынығу күйіне) бейімделгіштігі және жаңбырдан кейін өсуін қайта жалғастыруы",
+    "root_type_kk": "шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "шашақ шығару – гүлдеу"
+    ],
+    "drought_symptoms_kk": "Түптенудің шектелуі, жапырақ ұштарының курауы (қысқа мерзімді құрғақшылықты жеңіл көшеді)"
+  },
+  {
+    "id": "sorghum",
+    "name_ru": "Сорго зерновое и сахарное",
+    "latin_name": "Sorghum bicolor",
+    "crop_type": "зерновые",
+    "drought_tolerance_score": 5,
+    "drought_mechanism": "«Растение-верблюд»: толстый восковой налет на листьях, мощная корневая система с гидротропизмом, C4-фотосинтез",
+    "root_depth_meters": "2.0 - 2.8",
+    "root_type": "мочковатая глубокая",
+    "transpiration_coefficient": "180 - 250 л/кг СВ",
+    "critical_water_phases": [
+      "выметывание метелки"
+    ],
+    "wilting_threshold_swc_percent": 20,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "sierozem_calcareous",
+      "brown_semi_desert",
+      "sandy_arenosol"
+    ],
+    "risk_soil_types": [],
+    "fao_kc_coefficient": 1.0,
+    "drought_symptoms": "Сворачивание листовых пластин вдоль центральной жилки, остановка удлинения междоузлий",
+    "name_kk": "Сорго (данғы және қанттық)",
+    "crop_type_kk": "астық дақылдар",
+    "drought_mechanism_kk": "«Түйе өсімдігі»: жапырақтарында қалың балауыз қабықшаның болуы, суды қатты тартатын (гидротропизмі) мол тамыр жүйесі, C4 фотосинтезі",
+    "root_type_kk": "терең шашыраңқы тамырлы",
+    "critical_water_phases_kk": [
+      "шашақ шығару"
+    ],
+    "drought_symptoms_kk": "Жапырақ тақтайшаларының орта тамыры бойына оралып жиырылуы, буынаралықтардың созылуының тоқтауы"
+  },
+  {
+    "id": "sunflower",
+    "name_ru": "Подсолнечник масличный",
+    "latin_name": "Helianthus annuus",
+    "crop_type": "масличные",
+    "drought_tolerance_score": 3.8,
+    "drought_mechanism": "Стержневой глубокий корень, выкачивающий влагу из горизонта 2-3 метров",
+    "root_depth_meters": "2.0 - 3.2",
+    "root_type": "стержневая глубокая",
+    "transpiration_coefficient": "450 - 600 л/кг СВ",
+    "critical_water_phases": [
+      "закладка корзинки (фаза «звездочки»)",
+      "цветение",
+      "налив семян"
+    ],
+    "wilting_threshold_swc_percent": 35,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary",
+      "chestnut_dark_light"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Поникание корзинок, увядание нижних 4-6 пар листьев, пустозерность в центре корзинки",
+    "name_kk": "Майлы күнбағыс",
+    "crop_type_kk": "майлы дақылдар",
+    "drought_mechanism_kk": "2-3 метр тереңдіктегі қабаттан ылғалды сорып алатын терең өзек тамыр",
+    "root_type_kk": "терең өзек тамырлы",
+    "critical_water_phases_kk": [
+      "себетшенің салынуы («жұлдызша» фазасы)",
+      "гүлдеу",
+      "тұқымның толысуы"
+    ],
+    "drought_symptoms_kk": "Себетшелердің салбырап иілуі, төменгі 4-6 жұп жапырақтың солуы, себетшенің ортасының бос тұқымды болуы"
+  },
+  {
+    "id": "safflower",
+    "name_ru": "Сафлор красильный",
+    "latin_name": "Carthamus tinctorius",
+    "crop_type": "масличные",
+    "drought_tolerance_score": 4.9,
+    "drought_mechanism": "Ксерофитная анатомия: колючие плотные кожистые листья, мощный стержневой корень, солеустойчивость",
+    "root_depth_meters": "2.2 - 3.0",
+    "root_type": "стержневая глубокая",
+    "transpiration_coefficient": "300 - 380 л/кг СВ",
+    "critical_water_phases": [
+      "бутонизация и начало цветения"
+    ],
+    "wilting_threshold_swc_percent": 22,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "sierozem_calcareous",
+      "brown_semi_desert"
+    ],
+    "risk_soil_types": [],
+    "fao_kc_coefficient": 1.05,
+    "drought_symptoms": "Усыхание единичных боковых веточек, раннее созревание",
+    "name_kk": "Бояғыш сафлор",
+    "crop_type_kk": "майлы дақылдар",
+    "drought_mechanism_kk": "Ксерофиттік анатомия: тікенекті, тығыз, тері тәрізді қалың жапырақтар, мол өзек тамыр, тұзға төзімділік",
+    "root_type_kk": "терең өзек тамырлы",
+    "critical_water_phases_kk": [
+      "гүл бүршігі шығу және гүлдеудің басталуы"
+    ],
+    "drought_symptoms_kk": "Жеке бүйірлік тармақшалардың курауы, ерте пісіп жетуі"
+  },
+  {
+    "id": "spring_rapeseed",
+    "name_ru": "Рапс яровой",
+    "latin_name": "Brassica napus",
+    "crop_type": "масличные",
+    "drought_tolerance_score": 2.5,
+    "drought_mechanism": "Поверхностная масса мелких корней, высокая чувствительность к почвенной и воздушной засухе",
+    "root_depth_meters": "1.2 - 1.5",
+    "root_type": "стержневая разветвленная",
+    "transpiration_coefficient": "500 - 700 л/кг СВ",
+    "critical_water_phases": [
+      "бутонизация",
+      "цветение",
+      "формирование стручков"
+    ],
+    "wilting_threshold_swc_percent": 45,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary"
+    ],
+    "risk_soil_types": [
+      "chestnut_dark_light",
+      "solonchak_solonetz",
+      "sandy_arenosol",
+      "brown_semi_desert"
+    ],
+    "fao_kc_coefficient": 1.2,
+    "drought_symptoms": "Абортирование цветков и бутонов, растрескивание стручков, преждевременный сброс листьев",
+    "name_kk": "Жаздық рапс",
+    "crop_type_kk": "майлы дақылдар",
+    "drought_mechanism_kk": "Беткей орналасқан майда тамырлардың молдығы, топырақ және ауа құрғақшылығына өте сезімтал болуы",
+    "root_type_kk": "тармақталған өзек тамырлы",
+    "critical_water_phases_kk": [
+      "гүл бүршігі шығу",
+      "гүлдеу",
+      "қақаштардың қалыптасуы"
+    ],
+    "drought_symptoms_kk": "Гүлдер мен бүршіктердің түсіп қалуы (аборт болуы), қақаштардың жарылуы, жапырақтардың мерзімінен бұрын түсуі"
+  },
+  {
+    "id": "flax_linseed",
+    "name_ru": "Лён масличный (кудряш)",
+    "latin_name": "Linum usitatissimum",
+    "crop_type": "масличные",
+    "drought_tolerance_score": 3.8,
+    "drought_mechanism": "Небольшая листовая поверхность, мелкие семена с быстрым наливом, способность извлекать влагу из плотных слоев",
+    "root_depth_meters": "1.0 - 1.4",
+    "root_type": "стержневая тонкая",
+    "transpiration_coefficient": "380 - 440 л/кг СВ",
+    "critical_water_phases": [
+      "«елочка» (быстрый рост стебля)",
+      "бутонизация и цветение"
+    ],
+    "wilting_threshold_swc_percent": 30,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "chernozem_southern_ordinary"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.0,
+    "drought_symptoms": "Низкорослость стебля, сниженное ветвление, уменьшение числа коробочек на растении",
+    "name_kk": "Май зығы (құдряш)",
+    "crop_type_kk": "майлы дақылдар",
+    "drought_mechanism_kk": "Жапырақ бетінің шағындығы, майда тұқымдарының тез толысуы, тығыз қабаттардан ылғалды ала білу қабілеті",
+    "root_type_kk": "жіңішке өзек тамырлы",
+    "critical_water_phases_kk": [
+      "«шиыршық» (сабақтың тез өсу кезеңі)",
+      "гүл бүршігі шығу және гүлдеу"
+    ],
+    "drought_symptoms_kk": "Сабақтың аласа болуы, бұталануының азаюы, өсімдіктегі жеміс қорапшаларының санының азаюы"
+  },
+  {
+    "id": "chickpea",
+    "name_ru": "Нут (турецкий горох)",
+    "latin_name": "Cicer arietinum",
+    "crop_type": "зернобобовые",
+    "drought_tolerance_score": 4.5,
+    "drought_mechanism": "Железистые волоски, выделяющие органические кислоты (яблочную/щавелевую) для удержания росы, глубокий стержневой корень",
+    "root_depth_meters": "1.4 - 1.8",
+    "root_type": "стержневая с клубеньками",
+    "transpiration_coefficient": "300 - 380 л/кг СВ",
+    "critical_water_phases": [
+      "цветение и образование бобов"
+    ],
+    "wilting_threshold_swc_percent": 25,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "chernozem_southern_ordinary",
+      "sierozem_calcareous"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz"
+    ],
+    "fao_kc_coefficient": 1.0,
+    "drought_symptoms": "Пожелтение нижних бобов, сброс верхних неопыленных цветков",
+    "name_kk": "Ноқат (татар бұршағы)",
+    "crop_type_kk": "астық-бұршақ дақылдары",
+    "drought_mechanism_kk": "Безді түктерінің шық тамшыларын ұстап қалу үшін органикалық қышқылдарды (алма және шөп қышқылы) бөлуі, терең өзек тамыры",
+    "root_type_kk": "түйіншелі өзек тамырлы",
+    "critical_water_phases_kk": [
+      "гүлдеу және бұршақ қақаштарының қалыптасуы"
+    ],
+    "drought_symptoms_kk": "Төменгі бұршақтарының сарғалуы, жоғарғы ұрықтанбаған гүлдерінің түсіп қалуы"
+  },
+  {
+    "id": "lentil",
+    "name_ru": "Чечевица (тарелочная и мелкосемянная)",
+    "latin_name": "Lens culinaris",
+    "crop_type": "зернобобовые",
+    "drought_tolerance_score": 3.7,
+    "drought_mechanism": "Короткий вегетационный период, мелколистность, высокая устойчивость к суховеям в первой половине лета",
+    "root_depth_meters": "0.8 - 1.1",
+    "root_type": "стержневая разветвленная",
+    "transpiration_coefficient": "350 - 430 л/кг СВ",
+    "critical_water_phases": [
+      "бутонизация и цветение"
+    ],
+    "wilting_threshold_swc_percent": 30,
+    "optimal_soil_types": [
+      "chestnut_dark_light",
+      "chernozem_southern_ordinary"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.0,
+    "drought_symptoms": "Полегание тонких стеблей, раннее отмирание точки роста, мелкосемянность",
+    "name_kk": "Тары бұршағы (чечевица; табақшалы және майда тұқымды)",
+    "crop_type_kk": "астық-бұршақ дақылдары",
+    "drought_mechanism_kk": "Вегетация кезеңінің қысқалығы, жапырағының майдалығы, жаздың алғашқы жартысында құрғақ желдерге (сухейге) өте төзімді болуы",
+    "root_type_kk": "тармақталған өзек тамырлы",
+    "critical_water_phases_kk": [
+      "гүл бүршігі шығу және гүлдеу"
+    ],
+    "drought_symptoms_kk": "Жіңішке сабақтардың жатып қалуы, өсу нүктесінің ерте өлуі, тұқымының майда болуы"
+  },
+  {
+    "id": "pea",
+    "name_ru": "Горох полевой",
+    "latin_name": "Pisum sativum",
+    "crop_type": "зернобобовые",
+    "drought_tolerance_score": 2.8,
+    "drought_mechanism": "Низкая термостойкость пыльцы, при температуре >+28°C цветки осыпаются",
+    "root_depth_meters": "1.0 - 1.3",
+    "root_type": "стержневая",
+    "transpiration_coefficient": "400 - 500 л/кг СВ",
+    "critical_water_phases": [
+      "бутонизация",
+      "цветение",
+      "налив бобов"
+    ],
+    "wilting_threshold_swc_percent": 40,
+    "optimal_soil_types": [
+      "chernozem_southern_ordinary"
+    ],
+    "risk_soil_types": [
+      "chestnut_dark_light",
+      "solonchak_solonetz",
+      "sandy_arenosol",
+      "brown_semi_desert"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Массовое опадение бутонов («пустоцвет»), усыхание прилистников, задержка роста усов",
+    "name_kk": "Дала бұршағы",
+    "crop_type_kk": "астық-бұршақ дақылдары",
+    "drought_mechanism_kk": "Гүл шаңының жоғары температураға төзімділігінің төмендігі: +28°C-тан жоғарыда гүлдері түсіп қалады",
+    "root_type_kk": "өзек тамырлы",
+    "critical_water_phases_kk": [
+      "гүл бүршігі шығу",
+      "гүлдеу",
+      "бұршақтарының толысуы"
+    ],
+    "drought_symptoms_kk": "Бүршіктердің жаппай түсіп қалуы («босгүлділік»), қолтық жапырақшаларының (прилистник) курауы, мұртшалардың өсуінің тежелуі"
+  },
+  {
+    "id": "alfalfa",
+    "name_ru": "Люцерна синяя / кормовая",
+    "latin_name": "Medicago sativa",
+    "crop_type": "кормовые",
+    "drought_tolerance_score": 4.5,
+    "drought_mechanism": "Мощнейший стержневой корень, проникающий до 4-6 метров и достающий влагу грунтовых вод",
+    "root_depth_meters": "3.5 - 6.0",
+    "root_type": "стержневая глубинная",
+    "transpiration_coefficient": "600 - 850 л/кг СВ (высокий суммарный расход, но непревзойденная живучесть)",
+    "critical_water_phases": [
+      "отрастание после каждого укоса",
+      "стеблевание"
+    ],
+    "wilting_threshold_swc_percent": 25,
+    "optimal_soil_types": [
+      "sierozem_calcareous",
+      "alluvial_meadow",
+      "chernozem_southern_ordinary",
+      "chestnut_dark_light"
+    ],
+    "risk_soil_types": [
+      "sandy_arenosol"
+    ],
+    "fao_kc_coefficient": 1.15,
+    "drought_symptoms": "Остановка отрастания отавы после укоса, скручивание тройчатых листьев, ранее одревеснение стеблей",
+    "name_kk": "Көк беде (азықтық жонура)",
+    "crop_type_kk": "азықтық дақылдар",
+    "drought_mechanism_kk": "4-6 метрге дейін енетін және жерасты суларының ылғалына жететін өте мол өзек тамыр жүйесі",
+    "root_type_kk": "өте терең өзек тамырлы",
+    "critical_water_phases_kk": [
+      "әрбір шабу (орық) сайын қайта өніп-шығу",
+      "сабақтың созылуы"
+    ],
+    "drought_symptoms_kk": "Шабылғаннан кейін қайта өскіннің (отав) шықпай қалуы, үш бөлікті жапырақшалардың оралып жиырылуы, сабақтарының ерте ағаштануы"
+  },
+  {
+    "id": "cotton",
+    "name_ru": "Хлопчатник (средневолокнистый)",
+    "latin_name": "Gossypium hirsutum",
+    "crop_type": "технические",
+    "drought_tolerance_score": 3.8,
+    "drought_mechanism": "Термофильная культура, глубокий корень, способность сбрасывать лишние коробочки для выживания",
+    "root_depth_meters": "1.8 - 2.5",
+    "root_type": "стержневая глубокая",
+    "transpiration_coefficient": "400 - 550 л/кг СВ",
+    "critical_water_phases": [
+      "массовое цветение",
+      "плодообразование (рост коробочек)"
+    ],
+    "wilting_threshold_swc_percent": 35,
+    "optimal_soil_types": [
+      "sierozem_calcareous",
+      "alluvial_meadow"
+    ],
+    "risk_soil_types": [
+      "solonchak_solonetz",
+      "sandy_arenosol",
+      "brown_semi_desert"
+    ],
+    "fao_kc_coefficient": 1.2,
+    "drought_symptoms": "Сброс бутонов и завязей («кутикулярный аборт»), покраснение верхней части стебля, увядание верхушечной почки",
+    "name_kk": "Мақта (орташа талшықты)",
+    "crop_type_kk": "техникалық дақылдар",
+    "drought_mechanism_kk": "Жылу сүйгіш дақыл, терең тамыр, аман қалу үшін артық жеміс қорапшаларын түсіп қала алу қабілеті",
+    "root_type_kk": "терең өзек тамырлы",
+    "critical_water_phases_kk": [
+      "жаппай гүлдеу",
+      "жеміс байланысу (қорапшалардың өсуі)"
+    ],
+    "drought_symptoms_kk": "Бүршіктер мен түйіндердің түсіп қалуы («кутикулярлық аборт»), сабақтың жоғарғы бөлігінің қызаруы, ұшындағы өсу бүршігінің солуы"
+  }
+]
