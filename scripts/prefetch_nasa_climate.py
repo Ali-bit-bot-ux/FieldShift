@@ -3,11 +3,13 @@ Backend 1 owns this script.
 
 Examples:
     python scripts/prefetch_nasa_climate.py
-    python scripts/prefetch_nasa_climate.py --years 2021-2026 --force
+    python scripts/prefetch_nasa_climate.py --years 2016-2026 --force
     python scripts/prefetch_nasa_climate.py --regions sko,kostanay --workers 2
+    python scripts/prefetch_nasa_climate.py --skip-validation
 
 The script is resumable: already cached years are reused unless --force is set.
-Each region is written atomically as soon as it finishes.
+Each region is written atomically as soon as it finishes. After the GEE seasons,
+a NASA POWER cross-check is stored under ``validation`` in the cache.
 """
 from __future__ import annotations
 
@@ -50,7 +52,24 @@ def parse_regions(value: str) -> list[str]:
     return regions
 
 
-def prefetch_region(region: str, years: list[int], force: bool) -> dict:
+def resolve_validation(region: str, rows: list[dict], cached: dict | None, force: bool) -> dict | None:
+    years = sorted(int(row["year"]) for row in rows)
+    previous = (cached or {}).get("validation")
+    if previous and not force and previous.get("years") == years:
+        return previous
+    try:
+        if previous and previous.get("centroid_lat_lon"):
+            lat, lon = previous["centroid_lat_lon"]
+        else:
+            lat, lon = gee.get_region_centroid(region)
+        power = gee.fetch_power_seasons(lat, lon, years)
+        return gee.build_power_validation(rows, power, lat, lon)
+    except gee.NasaDataUnavailable as exc:
+        print(f"[{region}] POWER cross-check unavailable: {exc}", file=sys.stderr, flush=True)
+        return previous
+
+
+def prefetch_region(region: str, years: list[int], force: bool, validate: bool = True) -> dict:
     cached = gee.load_cached_climate(region)
     existing = {
         int(row["year"]): row for row in (cached["years"] if cached else [])
@@ -77,7 +96,12 @@ def prefetch_region(region: str, years: list[int], force: bool) -> dict:
         raise RuntimeError("nothing to cache")
 
     summary = gee.build_climate_summary(rows)
-    path = gee.save_cached_climate(region, rows, summary)
+    validation = (
+        resolve_validation(region, rows, cached, force)
+        if validate
+        else (cached or {}).get("validation")
+    )
+    path = gee.save_cached_climate(region, rows, summary, validation=validation)
     fetched_years = {int(row["year"]) for row in rows}
     return {
         "region": region,
@@ -86,6 +110,7 @@ def prefetch_region(region: str, years: list[int], force: bool) -> dict:
         "reused": sorted(set(existing) & fetched_years) if not force else [],
         "skipped": sorted(wanted - fetched_years),
         "summary": summary,
+        "validation": validation,
     }
 
 
@@ -112,6 +137,11 @@ def main(argv: list[str] | None = None) -> int:
         default=4,
         help="Regions fetched in parallel (default: 4, use 1 if GEE throttles)",
     )
+    parser.add_argument(
+        "--skip-validation",
+        action="store_true",
+        help="Do not run the NASA POWER cross-check (keeps any cached one)",
+    )
     args = parser.parse_args(argv)
 
     regions = parse_regions(args.regions)
@@ -128,7 +158,7 @@ def main(argv: list[str] | None = None) -> int:
     workers = max(1, min(args.workers, len(regions)))
     with ThreadPoolExecutor(max_workers=workers) as pool:
         futures = {
-            pool.submit(prefetch_region, region, years, args.force): region
+            pool.submit(prefetch_region, region, years, args.force, not args.skip_validation): region
             for region in regions
         }
         for future in as_completed(futures):
@@ -154,6 +184,16 @@ def main(argv: list[str] | None = None) -> int:
                 f"stress={summary['climate_stress_level']}",
                 flush=True,
             )
+            validation = result["validation"]
+            if validation:
+                print(
+                    f"[{region}] POWER check: "
+                    f"P diff {validation['precipitation']['relative_diff_percent']}% "
+                    f"(r={validation['precipitation']['interannual_pearson_r']}), "
+                    f"ET diff {validation['evapotranspiration']['relative_diff_percent']}% "
+                    f"(r={validation['evapotranspiration']['interannual_pearson_r']})",
+                    flush=True,
+                )
 
     if failures:
         print(f"Failed regions: {failures}", file=sys.stderr)

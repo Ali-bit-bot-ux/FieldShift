@@ -11,8 +11,13 @@ Sources (verified against the live Earth Engine catalog):
     * FAO GAUL 2025 level 1: region boundaries
 
 Season: 1 April - 1 October, the grain-belt growing season. The cached summary
-is a recent climatology (mean of the cached seasons); per-year values are kept
-in ``data/processed/nasa_cache/<region>.json`` for transparency.
+is a climatology (mean of the cached seasons, 2016-2026 by default); per-year
+values are kept in ``data/processed/nasa_cache/<region>.json`` for transparency.
+
+Independent cross-check: NASA POWER (MERRA-2) daily ``PRECTOTCORR`` and
+``EVLAND`` at the region centroid are summed over the same season and stored
+under ``validation`` in the cache. It is a point-vs-region sanity check, not
+an input to the contract values.
 
 Climate stress is an explicit heuristic, not a hidden constant:
 ``index = 0.6 * (1 - P/ET) + 0.4 * (1 - SM/0.30)`` with thresholds
@@ -24,10 +29,13 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import os
 import threading
 import time
-from datetime import datetime, timezone
+import urllib.parse
+import urllib.request
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
@@ -51,7 +59,8 @@ REGION_ADMIN1 = {
     "pavlodar": "Pavlodar Region",
 }
 REGIONS = tuple(REGION_ADMIN1)
-DEFAULT_YEARS = tuple(range(2021, 2027))
+# SMAP L4 starts on 2015-03-31, so 2016 is the first complete growing season.
+DEFAULT_YEARS = tuple(range(2016, 2027))
 
 GAUL_ASSET = "FAO/GAUL/2025/level1"
 GLDAS_COLLECTION = "NASA/GLDAS/V021/NOAH/G025/T3H"
@@ -68,6 +77,12 @@ SEASON_END_MONTH = 10
 REGION_SCALE_M = 25_000
 MAX_PIXELS = 1_000_000_000
 REQUEST_ATTEMPTS = 3
+
+POWER_DAILY_URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
+POWER_PRECIP_PARAM = "PRECTOTCORR"
+POWER_ET_PARAM = "EVLAND"
+POWER_FILL_VALUE = -999.0
+POWER_TIMEOUT_S = 120
 
 # Reference wetness for the composite stress index: close to field capacity
 # for the loamy chernozems and chestnut soils of the grain belt.
@@ -315,6 +330,7 @@ def save_cached_climate(
     series: Sequence[Mapping],
     summary: Mapping | None = None,
     cache_dir: Path | str | None = None,
+    validation: Mapping | None = None,
 ) -> Path:
     """Write an atomic, contract-shaped cache document and return its path."""
     key = _normalise_region(region)
@@ -342,6 +358,8 @@ def save_cached_climate(
             "boundaries": GAUL_ASSET,
         },
     }
+    if validation is not None:
+        payload["validation"] = dict(validation)
     path = _cache_path(key, cache_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".json.tmp")
@@ -397,6 +415,121 @@ def fetch_nasa_climate_series(
     if not rows:
         raise NasaDataUnavailable(f"No NASA seasons could be fetched for {key}")
     return rows
+
+
+def get_region_centroid(region: str, ee_module=None) -> tuple[float, float]:
+    """Return (lat, lon) of the GAUL region centroid."""
+    ee = ee_module or _ee()
+    geometry = get_region_geometry(region, ee)
+    lon, lat = _get_info(geometry.centroid(maxError=1000).coordinates())
+    return round(float(lat), 4), round(float(lon), 4)
+
+
+def _season_days(year: int) -> int:
+    start = date(int(year), SEASON_START_MONTH, 1)
+    end = date(int(year), SEASON_END_MONTH, 1)
+    return (end - start).days
+
+
+def aggregate_power_seasons(daily: Mapping[str, Mapping[str, float]]) -> dict[int, dict]:
+    """Sum POWER daily values per growing season; incomplete seasons are dropped."""
+    totals: dict[int, dict] = {}
+    for param, key in ((POWER_PRECIP_PARAM, "precipitation_mm"), (POWER_ET_PARAM, "evapotranspiration_mm")):
+        per_year: dict[int, list[float]] = {}
+        for stamp, value in daily.get(param, {}).items():
+            year, month = int(stamp[:4]), int(stamp[4:6])
+            if not SEASON_START_MONTH <= month < SEASON_END_MONTH:
+                continue
+            if value is None or float(value) <= POWER_FILL_VALUE:
+                continue
+            per_year.setdefault(year, []).append(float(value))
+        for year, values in per_year.items():
+            if len(values) == _season_days(year):
+                totals.setdefault(year, {})[key] = round(sum(values), 1)
+    return {
+        year: row
+        for year, row in sorted(totals.items())
+        if {"precipitation_mm", "evapotranspiration_mm"} <= set(row)
+    }
+
+
+def fetch_power_seasons(lat: float, lon: float, years: Sequence[int]) -> dict[int, dict]:
+    """Seasonal precipitation and land evaporation from NASA POWER (MERRA-2)."""
+    query = urllib.parse.urlencode(
+        {
+            "parameters": f"{POWER_PRECIP_PARAM},{POWER_ET_PARAM}",
+            "community": "AG",
+            "latitude": lat,
+            "longitude": lon,
+            "start": f"{min(years)}{SEASON_START_MONTH:02d}01",
+            "end": f"{max(years)}{SEASON_END_MONTH - 1:02d}30",
+            "format": "JSON",
+        }
+    )
+    last_error = None
+    for attempt in range(1, REQUEST_ATTEMPTS + 1):
+        try:
+            with urllib.request.urlopen(f"{POWER_DAILY_URL}?{query}", timeout=POWER_TIMEOUT_S) as response:
+                daily = json.loads(response.read().decode("utf-8"))["properties"]["parameter"]
+            break
+        except Exception as exc:  # pragma: no cover - network specific
+            last_error = exc
+            if attempt < REQUEST_ATTEMPTS:
+                time.sleep(2.0 * attempt)
+    else:
+        raise NasaDataUnavailable(f"NASA POWER request failed: {last_error}") from last_error
+    wanted = {int(year) for year in years}
+    return {year: row for year, row in aggregate_power_seasons(daily).items() if year in wanted}
+
+
+def _pearson(xs: Sequence[float], ys: Sequence[float]) -> float | None:
+    if len(xs) < 3:
+        return None
+    mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
+    sx = math.sqrt(sum((x - mx) ** 2 for x in xs))
+    sy = math.sqrt(sum((y - my) ** 2 for y in ys))
+    if sx == 0 or sy == 0:
+        return None
+    return round(sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / (sx * sy), 3)
+
+
+def build_power_validation(
+    series: Sequence[Mapping], power: Mapping[int, Mapping], lat: float, lon: float
+) -> dict:
+    """Compare cached GEE seasons against NASA POWER on overlapping years."""
+    by_year = {int(row["year"]): row for row in series}
+    years = sorted(set(by_year) & {int(year) for year in power})
+    if not years:
+        raise NasaDataUnavailable("NASA POWER has no seasons overlapping the cache")
+
+    def compare(gee_key: str, power_key: str) -> dict:
+        gee_values = [float(by_year[year][gee_key]) for year in years]
+        power_values = [float(power[year][power_key]) for year in years]
+        gee_mean = sum(gee_values) / len(gee_values)
+        power_mean = sum(power_values) / len(power_values)
+        return {
+            "gee_mean_mm": round(gee_mean, 1),
+            "power_mean_mm": round(power_mean, 1),
+            "relative_diff_percent": round(100.0 * (gee_mean - power_mean) / power_mean, 1),
+            "interannual_pearson_r": _pearson(gee_values, power_values),
+        }
+
+    return {
+        "source": f"NASA POWER daily point API ({POWER_PRECIP_PARAM}, {POWER_ET_PARAM}; MERRA-2)",
+        "method": "point at GAUL region centroid vs GEE region mean, same season",
+        "centroid_lat_lon": [lat, lon],
+        "years": years,
+        "per_year": [
+            {
+                "year": year,
+                "power_precipitation_mm": power[year]["precipitation_mm"],
+                "power_evapotranspiration_mm": power[year]["evapotranspiration_mm"],
+            }
+            for year in years
+        ],
+        "precipitation": compare("imerg_precipitation_mm", "precipitation_mm"),
+        "evapotranspiration": compare("gldas_evapotranspiration_mm", "evapotranspiration_mm"),
+    }
 
 
 def get_nasa_climate_series(region: str) -> list[dict]:

@@ -2,9 +2,44 @@
   "schema_version": "fieldshift.nasa_cache/1",
   "region": "akmola",
   "region_admin1": "Akmola Region",
-  "generated_at": "2026-11-14T10:06:51+00:00",
+  "generated_at": "2026-11-14T13:02:51+00:00",
   "season": "04-01..10-01",
   "years": [
+    {
+      "year": 2016,
+      "gldas_evapotranspiration_mm": 353.5,
+      "imerg_precipitation_mm": 285.1,
+      "smap_surface_m3m3": 0.2304,
+      "smap_rootzone_m3m3": 0.2886
+    },
+    {
+      "year": 2017,
+      "gldas_evapotranspiration_mm": 312.6,
+      "imerg_precipitation_mm": 162.7,
+      "smap_surface_m3m3": 0.2025,
+      "smap_rootzone_m3m3": 0.2711
+    },
+    {
+      "year": 2018,
+      "gldas_evapotranspiration_mm": 337.4,
+      "imerg_precipitation_mm": 306.4,
+      "smap_surface_m3m3": 0.2355,
+      "smap_rootzone_m3m3": 0.2823
+    },
+    {
+      "year": 2019,
+      "gldas_evapotranspiration_mm": 332.0,
+      "imerg_precipitation_mm": 237.6,
+      "smap_surface_m3m3": 0.2281,
+      "smap_rootzone_m3m3": 0.2809
+    },
+    {
+      "year": 2020,
+      "gldas_evapotranspiration_mm": 428.1,
+      "imerg_precipitation_mm": 243.9,
+      "smap_surface_m3m3": 0.2117,
+      "smap_rootzone_m3m3": 0.2754
+    },
     {
       "year": 2021,
       "gldas_evapotranspiration_mm": 336.4,
@@ -49,13 +84,13 @@
     }
   ],
   "summary": {
-    "nasa_smap_moisture_m3m3": 0.21,
-    "nasa_gldas_evapotranspiration_mm": 415.9,
-    "nasa_imerg_precipitation_mm": 271.6,
+    "nasa_smap_moisture_m3m3": 0.215,
+    "nasa_gldas_evapotranspiration_mm": 387.2,
+    "nasa_imerg_precipitation_mm": 260.5,
     "climate_stress_level": "MILD_STRESS"
   },
   "summary_period": [
-    2021,
+    2016,
     2026
   ],
   "sources": {
@@ -63,5 +98,95 @@
     "precipitation": "NASA/GPM_L3/IMERG_V07",
     "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
     "boundaries": "FAO/GAUL/2025/level1"
+  },
+  "validation": {
+    "source": "NASA POWER daily point API (PRECTOTCORR, EVLAND; MERRA-2)",
+    "method": "point at GAUL region centroid vs GEE region mean, same season",
+    "centroid_lat_lon": [
+      51.7932,
+      69.8883
+    ],
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "per_year": [
+      {
+        "year": 2016,
+        "power_precipitation_mm": 262.8,
+        "power_evapotranspiration_mm": 368.9
+      },
+      {
+        "year": 2017,
+        "power_precipitation_mm": 150.2,
+        "power_evapotranspiration_mm": 301.2
+      },
+      {
+        "year": 2018,
+        "power_precipitation_mm": 306.3,
+        "power_evapotranspiration_mm": 353.0
+      },
+      {
+        "year": 2019,
+        "power_precipitation_mm": 232.0,
+        "power_evapotranspiration_mm": 352.2
+      },
+      {
+        "year": 2020,
+        "power_precipitation_mm": 240.1,
+        "power_evapotranspiration_mm": 379.9
+      },
+      {
+        "year": 2021,
+        "power_precipitation_mm": 187.6,
+        "power_evapotranspiration_mm": 276.2
+      },
+      {
+        "year": 2022,
+        "power_precipitation_mm": 165.0,
+        "power_evapotranspiration_mm": 287.4
+      },
+      {
+        "year": 2023,
+        "power_precipitation_mm": 211.7,
+        "power_evapotranspiration_mm": 295.1
+      },
+      {
+        "year": 2024,
+        "power_precipitation_mm": 465.8,
+        "power_evapotranspiration_mm": 517.0
+      },
+      {
+        "year": 2025,
+        "power_precipitation_mm": 331.0,
+        "power_evapotranspiration_mm": 471.1
+      },
+      {
+        "year": 2026,
+        "power_precipitation_mm": 229.3,
+        "power_evapotranspiration_mm": 376.6
+      }
+    ],
+    "precipitation": {
+      "gee_mean_mm": 260.5,
+      "power_mean_mm": 252.9,
+      "relative_diff_percent": 3.0,
+      "interannual_pearson_r": 0.951
+    },
+    "evapotranspiration": {
+      "gee_mean_mm": 387.2,
+      "power_mean_mm": 361.7,
+      "relative_diff_percent": 7.0,
+      "interannual_pearson_r": 0.886
+    }
   }
 }
