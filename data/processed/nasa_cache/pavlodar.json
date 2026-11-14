@@ -1,0 +1,67 @@
+{
+  "schema_version": "fieldshift.nasa_cache/1",
+  "region": "pavlodar",
+  "region_admin1": "Pavlodar Region",
+  "generated_at": "2026-11-14T10:10:58+00:00",
+  "season": "04-01..10-01",
+  "years": [
+    {
+      "year": 2021,
+      "gldas_evapotranspiration_mm": 329.3,
+      "imerg_precipitation_mm": 181.0,
+      "smap_surface_m3m3": 0.1742,
+      "smap_rootzone_m3m3": 0.2299
+    },
+    {
+      "year": 2022,
+      "gldas_evapotranspiration_mm": 306.0,
+      "imerg_precipitation_mm": 165.2,
+      "smap_surface_m3m3": 0.1683,
+      "smap_rootzone_m3m3": 0.2242
+    },
+    {
+      "year": 2023,
+      "gldas_evapotranspiration_mm": 311.1,
+      "imerg_precipitation_mm": 207.4,
+      "smap_surface_m3m3": 0.1698,
+      "smap_rootzone_m3m3": 0.2189
+    },
+    {
+      "year": 2024,
+      "gldas_evapotranspiration_mm": 479.5,
+      "imerg_precipitation_mm": 429.3,
+      "smap_surface_m3m3": 0.2288,
+      "smap_rootzone_m3m3": 0.2651
+    },
+    {
+      "year": 2025,
+      "gldas_evapotranspiration_mm": 443.8,
+      "imerg_precipitation_mm": 317.0,
+      "smap_surface_m3m3": 0.2,
+      "smap_rootzone_m3m3": 0.2455
+    },
+    {
+      "year": 2026,
+      "gldas_evapotranspiration_mm": 398.6,
+      "imerg_precipitation_mm": 169.1,
+      "smap_surface_m3m3": 0.1635,
+      "smap_rootzone_m3m3": 0.2294
+    }
+  ],
+  "summary": {
+    "nasa_smap_moisture_m3m3": 0.184,
+    "nasa_gldas_evapotranspiration_mm": 378.1,
+    "nasa_imerg_precipitation_mm": 244.8,
+    "climate_stress_level": "MILD_STRESS"
+  },
+  "summary_period": [
+    2021,
+    2026
+  ],
+  "sources": {
+    "evapotranspiration": "NASA/GLDAS/V021/NOAH/G025/T3H",
+    "precipitation": "NASA/GPM_L3/IMERG_V07",
+    "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
+    "boundaries": "FAO/GAUL/2025/level1"
+  }
+}

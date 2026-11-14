@@ -1,0 +1,67 @@
+{
+  "schema_version": "fieldshift.nasa_cache/1",
+  "region": "akmola",
+  "region_admin1": "Akmola Region",
+  "generated_at": "2026-11-14T10:06:51+00:00",
+  "season": "04-01..10-01",
+  "years": [
+    {
+      "year": 2021,
+      "gldas_evapotranspiration_mm": 336.4,
+      "imerg_precipitation_mm": 164.8,
+      "smap_surface_m3m3": 0.1873,
+      "smap_rootzone_m3m3": 0.2528
+    },
+    {
+      "year": 2022,
+      "gldas_evapotranspiration_mm": 338.4,
+      "imerg_precipitation_mm": 181.7,
+      "smap_surface_m3m3": 0.1883,
+      "smap_rootzone_m3m3": 0.2505
+    },
+    {
+      "year": 2023,
+      "gldas_evapotranspiration_mm": 370.9,
+      "imerg_precipitation_mm": 254.5,
+      "smap_surface_m3m3": 0.1997,
+      "smap_rootzone_m3m3": 0.257
+    },
+    {
+      "year": 2024,
+      "gldas_evapotranspiration_mm": 514.7,
+      "imerg_precipitation_mm": 430.1,
+      "smap_surface_m3m3": 0.2788,
+      "smap_rootzone_m3m3": 0.3199
+    },
+    {
+      "year": 2025,
+      "gldas_evapotranspiration_mm": 498.1,
+      "imerg_precipitation_mm": 308.8,
+      "smap_surface_m3m3": 0.2247,
+      "smap_rootzone_m3m3": 0.2842
+    },
+    {
+      "year": 2026,
+      "gldas_evapotranspiration_mm": 436.9,
+      "imerg_precipitation_mm": 289.8,
+      "smap_surface_m3m3": 0.1791,
+      "smap_rootzone_m3m3": 0.2535
+    }
+  ],
+  "summary": {
+    "nasa_smap_moisture_m3m3": 0.21,
+    "nasa_gldas_evapotranspiration_mm": 415.9,
+    "nasa_imerg_precipitation_mm": 271.6,
+    "climate_stress_level": "MILD_STRESS"
+  },
+  "summary_period": [
+    2021,
+    2026
+  ],
+  "sources": {
+    "evapotranspiration": "NASA/GLDAS/V021/NOAH/G025/T3H",
+    "precipitation": "NASA/GPM_L3/IMERG_V07",
+    "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
+    "boundaries": "FAO/GAUL/2025/level1"
+  }
+}

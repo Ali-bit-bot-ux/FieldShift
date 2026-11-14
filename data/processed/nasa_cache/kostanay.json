@@ -1,0 +1,67 @@
+{
+  "schema_version": "fieldshift.nasa_cache/1",
+  "region": "kostanay",
+  "region_admin1": "Kostanay Region",
+  "generated_at": "2026-11-14T10:02:54+00:00",
+  "season": "04-01..10-01",
+  "years": [
+    {
+      "year": 2021,
+      "gldas_evapotranspiration_mm": 264.1,
+      "imerg_precipitation_mm": 115.8,
+      "smap_surface_m3m3": 0.1521,
+      "smap_rootzone_m3m3": 0.2297
+    },
+    {
+      "year": 2022,
+      "gldas_evapotranspiration_mm": 301.8,
+      "imerg_precipitation_mm": 140.8,
+      "smap_surface_m3m3": 0.1623,
+      "smap_rootzone_m3m3": 0.2297
+    },
+    {
+      "year": 2023,
+      "gldas_evapotranspiration_mm": 342.5,
+      "imerg_precipitation_mm": 254.4,
+      "smap_surface_m3m3": 0.1893,
+      "smap_rootzone_m3m3": 0.2487
+    },
+    {
+      "year": 2024,
+      "gldas_evapotranspiration_mm": 433.5,
+      "imerg_precipitation_mm": 298.6,
+      "smap_surface_m3m3": 0.2351,
+      "smap_rootzone_m3m3": 0.2903
+    },
+    {
+      "year": 2025,
+      "gldas_evapotranspiration_mm": 414.5,
+      "imerg_precipitation_mm": 264.1,
+      "smap_surface_m3m3": 0.1817,
+      "smap_rootzone_m3m3": 0.25
+    },
+    {
+      "year": 2026,
+      "gldas_evapotranspiration_mm": 394.3,
+      "imerg_precipitation_mm": 315.2,
+      "smap_surface_m3m3": 0.1479,
+      "smap_rootzone_m3m3": 0.2259
+    }
+  ],
+  "summary": {
+    "nasa_smap_moisture_m3m3": 0.178,
+    "nasa_gldas_evapotranspiration_mm": 358.4,
+    "nasa_imerg_precipitation_mm": 231.5,
+    "climate_stress_level": "MILD_STRESS"
+  },
+  "summary_period": [
+    2021,
+    2026
+  ],
+  "sources": {
+    "evapotranspiration": "NASA/GLDAS/V021/NOAH/G025/T3H",
+    "precipitation": "NASA/GPM_L3/IMERG_V07",
+    "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
+    "boundaries": "FAO/GAUL/2025/level1"
+  }
+}

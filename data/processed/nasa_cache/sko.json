@@ -1,0 +1,67 @@
+{
+  "schema_version": "fieldshift.nasa_cache/1",
+  "region": "sko",
+  "region_admin1": "North Kazakhstan Region",
+  "generated_at": "2026-11-14T10:27:19+00:00",
+  "season": "04-01..10-01",
+  "years": [
+    {
+      "year": 2021,
+      "gldas_evapotranspiration_mm": 343.8,
+      "imerg_precipitation_mm": 189.6,
+      "smap_surface_m3m3": 0.1807,
+      "smap_rootzone_m3m3": 0.254
+    },
+    {
+      "year": 2022,
+      "gldas_evapotranspiration_mm": 354.2,
+      "imerg_precipitation_mm": 209.1,
+      "smap_surface_m3m3": 0.1745,
+      "smap_rootzone_m3m3": 0.2428
+    },
+    {
+      "year": 2023,
+      "gldas_evapotranspiration_mm": 394.8,
+      "imerg_precipitation_mm": 238.8,
+      "smap_surface_m3m3": 0.1877,
+      "smap_rootzone_m3m3": 0.2566
+    },
+    {
+      "year": 2024,
+      "gldas_evapotranspiration_mm": 541.1,
+      "imerg_precipitation_mm": 453.7,
+      "smap_surface_m3m3": 0.2759,
+      "smap_rootzone_m3m3": 0.3158
+    },
+    {
+      "year": 2025,
+      "gldas_evapotranspiration_mm": 543.4,
+      "imerg_precipitation_mm": 370.5,
+      "smap_surface_m3m3": 0.2242,
+      "smap_rootzone_m3m3": 0.2809
+    },
+    {
+      "year": 2026,
+      "gldas_evapotranspiration_mm": 491.3,
+      "imerg_precipitation_mm": 320.2,
+      "smap_surface_m3m3": 0.1681,
+      "smap_rootzone_m3m3": 0.2466
+    }
+  ],
+  "summary": {
+    "nasa_smap_moisture_m3m3": 0.202,
+    "nasa_gldas_evapotranspiration_mm": 444.8,
+    "nasa_imerg_precipitation_mm": 297.0,
+    "climate_stress_level": "MILD_STRESS"
+  },
+  "summary_period": [
+    2021,
+    2026
+  ],
+  "sources": {
+    "evapotranspiration": "NASA/GLDAS/V021/NOAH/G025/T3H",
+    "precipitation": "NASA/GPM_L3/IMERG_V07",
+    "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
+    "boundaries": "FAO/GAUL/2025/level1"
+  }
+}
