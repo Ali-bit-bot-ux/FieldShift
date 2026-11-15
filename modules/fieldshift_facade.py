@@ -45,6 +45,12 @@ def get_fieldshift_recommendation(payload: dict) -> dict:
         climate_data=climate,
         duration_years=request.duration_years,
     )
+    # Demand is mm per hectare; 1 mm over 1 ha equals 10 m³.
+    for strategy in strategies:
+        for year in strategy["rotation_years"]:
+            year["water_volume_m3"] = round(
+                year["water_demand_mm"] * request.field_area_ha * 10, 2
+            )
     return {
         "status": "success",
         "climate_context": climate,

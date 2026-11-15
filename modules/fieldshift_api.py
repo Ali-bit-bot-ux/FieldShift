@@ -38,6 +38,7 @@ class RotationYear(ResponseModel):
     crop_name_ru: str
     crop_name_kk: str
     water_demand_mm: float
+    water_volume_m3: float = Field(ge=0)
     soil_health_score: float
     nitrogen_balance_kg_ha: float
     rationale_ru: str
@@ -110,6 +111,12 @@ async def legacy_unavailable(request: Request, exc: LegacyDataUnavailable):
 
 @app.post(
     "/api/recommendation",
+    response_model=RecommendationResponse,
+    response_model_exclude_none=True,
+    responses={503: {"description": "NASA climate data unavailable"}},
+)
+@app.post(
+    "/fieldshift/recommendation",
     response_model=RecommendationResponse,
     response_model_exclude_none=True,
     responses={503: {"description": "NASA climate data unavailable"}},
