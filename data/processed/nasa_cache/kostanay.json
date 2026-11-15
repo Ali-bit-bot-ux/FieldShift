@@ -1,0 +1,192 @@
+{
+  "schema_version": "fieldshift.nasa_cache/1",
+  "region": "kostanay",
+  "region_admin1": "Kostanay Region",
+  "generated_at": "2026-11-14T13:02:49+00:00",
+  "season": "04-01..10-01",
+  "years": [
+    {
+      "year": 2016,
+      "gldas_evapotranspiration_mm": 356.3,
+      "imerg_precipitation_mm": 233.9,
+      "smap_surface_m3m3": 0.2072,
+      "smap_rootzone_m3m3": 0.2682
+    },
+    {
+      "year": 2017,
+      "gldas_evapotranspiration_mm": 340.0,
+      "imerg_precipitation_mm": 188.1,
+      "smap_surface_m3m3": 0.1944,
+      "smap_rootzone_m3m3": 0.2578
+    },
+    {
+      "year": 2018,
+      "gldas_evapotranspiration_mm": 306.8,
+      "imerg_precipitation_mm": 184.1,
+      "smap_surface_m3m3": 0.1882,
+      "smap_rootzone_m3m3": 0.2474
+    },
+    {
+      "year": 2019,
+      "gldas_evapotranspiration_mm": 279.0,
+      "imerg_precipitation_mm": 185.3,
+      "smap_surface_m3m3": 0.1733,
+      "smap_rootzone_m3m3": 0.2358
+    },
+    {
+      "year": 2020,
+      "gldas_evapotranspiration_mm": 351.2,
+      "imerg_precipitation_mm": 230.8,
+      "smap_surface_m3m3": 0.1876,
+      "smap_rootzone_m3m3": 0.2556
+    },
+    {
+      "year": 2021,
+      "gldas_evapotranspiration_mm": 264.1,
+      "imerg_precipitation_mm": 115.8,
+      "smap_surface_m3m3": 0.1521,
+      "smap_rootzone_m3m3": 0.2297
+    },
+    {
+      "year": 2022,
+      "gldas_evapotranspiration_mm": 301.8,
+      "imerg_precipitation_mm": 140.8,
+      "smap_surface_m3m3": 0.1623,
+      "smap_rootzone_m3m3": 0.2297
+    },
+    {
+      "year": 2023,
+      "gldas_evapotranspiration_mm": 342.5,
+      "imerg_precipitation_mm": 254.4,
+      "smap_surface_m3m3": 0.1893,
+      "smap_rootzone_m3m3": 0.2487
+    },
+    {
+      "year": 2024,
+      "gldas_evapotranspiration_mm": 433.5,
+      "imerg_precipitation_mm": 298.6,
+      "smap_surface_m3m3": 0.2351,
+      "smap_rootzone_m3m3": 0.2903
+    },
+    {
+      "year": 2025,
+      "gldas_evapotranspiration_mm": 414.5,
+      "imerg_precipitation_mm": 264.1,
+      "smap_surface_m3m3": 0.1817,
+      "smap_rootzone_m3m3": 0.25
+    },
+    {
+      "year": 2026,
+      "gldas_evapotranspiration_mm": 394.3,
+      "imerg_precipitation_mm": 315.2,
+      "smap_surface_m3m3": 0.1479,
+      "smap_rootzone_m3m3": 0.2259
+    }
+  ],
+  "summary": {
+    "nasa_smap_moisture_m3m3": 0.184,
+    "nasa_gldas_evapotranspiration_mm": 344.0,
+    "nasa_imerg_precipitation_mm": 219.2,
+    "climate_stress_level": "MILD_STRESS"
+  },
+  "summary_period": [
+    2016,
+    2026
+  ],
+  "sources": {
+    "evapotranspiration": "NASA/GLDAS/V021/NOAH/G025/T3H",
+    "precipitation": "NASA/GPM_L3/IMERG_V07",
+    "soil_moisture": "NASA/SMAP/SPL4SMGP/008",
+    "boundaries": "FAO/GAUL/2025/level1"
+  },
+  "validation": {
+    "source": "NASA POWER daily point API (PRECTOTCORR, EVLAND; MERRA-2)",
+    "method": "point at GAUL region centroid vs GEE region mean, same season",
+    "centroid_lat_lon": [
+      51.5557,
+      64.0398
+    ],
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "per_year": [
+      {
+        "year": 2016,
+        "power_precipitation_mm": 193.3,
+        "power_evapotranspiration_mm": 307.4
+      },
+      {
+        "year": 2017,
+        "power_precipitation_mm": 167.6,
+        "power_evapotranspiration_mm": 293.9
+      },
+      {
+        "year": 2018,
+        "power_precipitation_mm": 165.1,
+        "power_evapotranspiration_mm": 246.4
+      },
+      {
+        "year": 2019,
+        "power_precipitation_mm": 140.8,
+        "power_evapotranspiration_mm": 217.8
+      },
+      {
+        "year": 2020,
+        "power_precipitation_mm": 237.9,
+        "power_evapotranspiration_mm": 312.8
+      },
+      {
+        "year": 2021,
+        "power_precipitation_mm": 104.4,
+        "power_evapotranspiration_mm": 231.5
+      },
+      {
+        "year": 2022,
+        "power_precipitation_mm": 134.3,
+        "power_evapotranspiration_mm": 240.5
+      },
+      {
+        "year": 2023,
+        "power_precipitation_mm": 240.9,
+        "power_evapotranspiration_mm": 269.3
+      },
+      {
+        "year": 2024,
+        "power_precipitation_mm": 288.2,
+        "power_evapotranspiration_mm": 431.5
+      },
+      {
+        "year": 2025,
+        "power_precipitation_mm": 259.4,
+        "power_evapotranspiration_mm": 351.9
+      },
+      {
+        "year": 2026,
+        "power_precipitation_mm": 395.3,
+        "power_evapotranspiration_mm": 431.4
+      }
+    ],
+    "precipitation": {
+      "gee_mean_mm": 219.2,
+      "power_mean_mm": 211.6,
+      "relative_diff_percent": 3.6,
+      "interannual_pearson_r": 0.941
+    },
+    "evapotranspiration": {
+      "gee_mean_mm": 344.0,
+      "power_mean_mm": 303.1,
+      "relative_diff_percent": 13.5,
+      "interannual_pearson_r": 0.924
+    }
+  }
+}
