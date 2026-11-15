@@ -16,6 +16,7 @@ import {
   type Facility,
 } from "@/lib/farm-scenarios";
 import { Observations } from "./Observations";
+import { RegionalData } from "./RegionalData";
 import { Advisor } from "./Advisor";
 import { Logistics, RiskChain, Vulnerability } from "./Scenarios";
 const storageKey = "fieldshift.facilities.v1";
@@ -85,6 +86,14 @@ export default function FarmTools({
         <Vulnerability {...props} />
       ) : (
         <Observations kind={section} place={place} setPlace={setPlace} />
+      )}
+      {section !== "agroadvisor" && (
+        <RegionalData
+          tool={section}
+          region={(Object.keys(byRegion) as (keyof typeof byRegion)[]).find(
+            (r) => byRegion[r] === place,
+          )!}
+        />
       )}
     </article>
   );

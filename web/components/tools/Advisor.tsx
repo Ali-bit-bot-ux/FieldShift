@@ -1,3 +1,4 @@
+import { RegionalData } from "./RegionalData";
 import { useState } from "react";
 import advice from "@/data/advice.json";
 import { cropEnglish } from "@/lib/english";
@@ -131,6 +132,13 @@ export function Advisor() {
           </section>
         ))}
       </div>
+      <RegionalData
+        tool="agroadvisor"
+        region={settings.region}
+        crop={crop}
+        soil={soil}
+        stage={plant.phases[stage]?.ru}
+      />
     </>
   );
 }

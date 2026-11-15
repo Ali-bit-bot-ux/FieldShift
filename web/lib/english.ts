@@ -61,6 +61,33 @@ const variants: Record<string, string> = {
   "Нут засухоустойчивый": "Drought-tolerant chickpea",
 };
 const reasons: Record<string, string> = {
+  "Азотфиксация (+35 кг/га) и сохранение глубокой влаги перед коммерческой культурой.":
+    "Nitrogen fixation (+35 kg/ha) and conservation of deep soil moisture ahead of a cash crop.",
+  "Глубокая корневая система разуплотняет плужную подошву и накапливает гумус (+45 кг/га N).":
+    "Deep roots loosen the plough pan and help build organic matter (+45 kg N/ha).",
+  "Глубокий стержневой корень (до 2 м) извлекает остаточную влагу и разрушает солонцеватую корку при засухе.":
+    "A deep taproot (up to 2 m) reaches residual moisture and breaks the sodic crust during drought.",
+  "Истощение азота и резкий рост сорной нагрузки в монокультуре.":
+    "Continuous wheat depletes nitrogen and increases weed pressure.",
+  "Коммерческий посев пшеницы по No-Till стерне после азотфиксатора без почвоутомления.":
+    "No-till wheat follows a nitrogen-fixing crop, reducing the strain of repeated cropping.",
+  "Контрольный коммерческий сценарий монокультуры яровой пшеницы.":
+    "Continuous spring wheat provides the commercial comparison.",
+  "Короткий вегетационный период до наступления суховеев. Высокая стерня No-Till накапливает 50-70 мм талой влаги к новому циклу.":
+    "The growing season ends before dry winds arrive. The model assumes tall no-till stubble retains 50–70 mm of meltwater for the next cycle.",
+  "Критический риск фузариоза, потеря продуктивной влаги и падение урожайности до 40%.":
+    "The model flags high Fusarium risk, loss of available moisture and yield losses of up to 40%.",
+  "Повторный посев пшеницы: накопление корневых гнилей и раннее иссушение верхнего горизонта.":
+    "Repeated wheat increases root rot and dries the topsoil earlier.",
+  "Раннеспелый ячмень оставляет высокую стерню для снегозадержания перед новым циклом.":
+    "Early barley leaves tall stubble to trap snow for the next rotation.",
+  "Симбиотическая азотфиксация (+35 кг/га) и разрыв цикла злаковых корневых гнилей. Экономия влаги 35%.":
+    "Nitrogen fixation (+35 kg/ha) interrupts cereal root rot cycles. Modelled water saving: 35%.",
+  "Стартовая высокодоходная культура с надежным сбытом зерна.":
+    "The rotation opens with a high-return crop with an established market.",
+  "Стержневая корневая система структурирует пахотный слой почвы и разрушает подплужную подошву.":
+    "The taproot improves topsoil structure and breaks up the plough pan.",
+
   "Стартовая коммерческая культура с высоким сбытом.":
     "The rotation opens with a crop that has strong market demand.",
   "Азотфиксация и разрыв цикла злаковых болезней.":

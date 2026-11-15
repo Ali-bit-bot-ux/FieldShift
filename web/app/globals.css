@@ -1887,3 +1887,6 @@ dialog::backdrop {
   font-weight: 600;
   font-size: 0.9rem;
 }
+
+.regional-data { margin-top: 1.25rem; }
+.regional-data strong { display: block; margin-top: .5rem; font-size: 1.6rem; }

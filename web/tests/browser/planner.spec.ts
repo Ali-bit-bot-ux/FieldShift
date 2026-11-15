@@ -163,7 +163,7 @@ test("API mode debounces field edits, keeps the previous plan on failure, retrie
       json: data,
     });
   });
-  await page.goto("http://127.0.0.1:3002");
+  await page.goto("http://127.0.0.1:3102");
   await page.getByRole("button", { name: "3 года" }).click();
   await page.getByRole("button", { name: /Далее/ }).click();
   expect(requests).toEqual([]);

@@ -5,19 +5,19 @@ export default defineConfig({
   workers: 2,
   reporter: "list",
   use: {
-    baseURL: "http://127.0.0.1:3001",
+    baseURL: "http://127.0.0.1:3101",
     channel: process.env.PW_CHANNEL ?? "chromium",
   },
   webServer: [
     {
-      command: "npm start",
-      url: "http://127.0.0.1:3001",
+      command: "next start --hostname 127.0.0.1 --port 3101",
+      url: "http://127.0.0.1:3101",
       env: { FIELDSHIFT_DATA_MODE: "fixture" },
-      reuseExistingServer: true,
+      reuseExistingServer: false,
     },
     {
-      command: "next start --hostname 127.0.0.1 --port 3002",
-      url: "http://127.0.0.1:3002",
+      command: "next start --hostname 127.0.0.1 --port 3102",
+      url: "http://127.0.0.1:3102",
       env: { FIELDSHIFT_DATA_MODE: "api" },
       reuseExistingServer: false,
     },
