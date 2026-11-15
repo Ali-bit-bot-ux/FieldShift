@@ -9,6 +9,11 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from modules.fieldshift_facade import RecommendationRequest, get_fieldshift_recommendation
+from modules.legacy_advisor import router as advisor_router
+from modules.legacy_common import LegacyDataUnavailable
+from modules.legacy_risks import router as risks_router
+from modules.legacy_satellite import router as satellite_router
+from modules.legacy_silogrid import router as silogrid_router
 from pipeline.gee_client import NasaDataUnavailable
 
 LOGGER = logging.getLogger(__name__)
@@ -66,7 +71,7 @@ origins = os.getenv(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in origins.split(",") if origin.strip()],
-    allow_methods=["POST"],
+    allow_methods=["GET", "POST"],
     allow_headers=["Content-Type"],
 )
 
