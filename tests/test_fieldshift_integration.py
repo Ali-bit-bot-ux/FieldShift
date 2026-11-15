@@ -51,6 +51,9 @@ class TestFieldshiftIntegration(unittest.TestCase):
                             soil_id=soil, region=region, priorities=PAYLOAD["priorities"],
                             climate_data=climate, duration_years=duration,
                         )
+                        for strat in expected:
+                            for yr in strat["rotation_years"]:
+                                yr["water_volume_m3"] = round(yr["water_demand_mm"] * payload["field_area_ha"] * 10, 2)
                         self.assertEqual(body["strategies"], expected)
                         self.assertEqual([s["strategy_id"] for s in body["strategies"]], STRATEGIES)
                         for strategy in body["strategies"]:

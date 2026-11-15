@@ -88,6 +88,7 @@ const yearSchema = z.object({
   crop_name_kk: label,
   crop_name_en: label.optional(),
   water_demand_mm: z.number().nonnegative(),
+water_volume_m3: z.number().nonnegative().optional(),
   soil_health_score: z.number(),
   nitrogen_balance_kg_ha: z.number(),
   rationale_ru: label,
@@ -146,3 +147,5 @@ export function checkResult(
   );
   return data;
 }
+
+
