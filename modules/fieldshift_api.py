@@ -99,6 +99,15 @@ async def nasa_unavailable(request: Request, exc: NasaDataUnavailable):
     )
 
 
+@app.exception_handler(LegacyDataUnavailable)
+async def legacy_unavailable(request: Request, exc: LegacyDataUnavailable):
+    LOGGER.warning("Legacy data unavailable: %s", exc)
+    return JSONResponse(
+        status_code=503,
+        content={"detail": f"Legacy data unavailable: {exc}"},
+    )
+
+
 @app.post(
     "/api/recommendation",
     response_model=RecommendationResponse,
@@ -107,3 +116,10 @@ async def nasa_unavailable(request: Request, exc: NasaDataUnavailable):
 )
 def recommend(payload: RecommendationRequest):
     return get_fieldshift_recommendation(payload.model_dump())
+
+
+app.include_router(satellite_router)
+app.include_router(risks_router)
+app.include_router(silogrid_router)
+app.include_router(advisor_router)
+

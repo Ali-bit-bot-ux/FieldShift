@@ -8,6 +8,7 @@ import unittest
 from unittest.mock import patch
 
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.testclient import TestClient
 
@@ -25,6 +26,18 @@ class LegacyAdvisorTests(unittest.TestCase):
         @app.exception_handler(LegacyDataUnavailable)
         async def unavailable(request, exc):
             return JSONResponse(status_code=503, content={"detail": str(exc)})
+
+        @app.exception_handler(RequestValidationError)
+        async def invalid_request(request, exc: RequestValidationError):
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "detail": [
+                        {key: error[key] for key in ("loc", "msg", "type")}
+                        for error in exc.errors()
+                    ]
+                },
+            )
 
         cls.client = TestClient(app)
         cls.dataset = DroughtDataset()
