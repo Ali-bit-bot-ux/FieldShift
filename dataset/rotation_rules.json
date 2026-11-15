@@ -1,6 +1,6 @@
 {
   "schema_version": "fieldshift.rotation_rules/1",
-  "notes": "Starter rules. Backend 2 owns and must extend/validate this file.",
+  "notes": "Starter rules extended by Backend 2 (Agro Engine Lead) with agronomic coefficients and soil dynamics.",
   "crops": [
     "spring_wheat", "winter_wheat", "spring_barley", "oats", "maize_corn",
     "millet", "sorghum", "sunflower", "safflower", "spring_rapeseed",
@@ -50,5 +50,192 @@
     "grass_monoculture": -8,
     "deep_exhauster": -6,
     "no_till": 5
+  },
+  "initial_soil_health": {
+    "chernozem_southern_ordinary": 65,
+    "chestnut_dark_light": 55,
+    "sierozem_calcareous": 50,
+    "solonchak_solonetz": 35,
+    "sandy_arenosol": 40,
+    "alluvial_meadow": 65,
+    "brown_semi_desert": 40
+  },
+  "crop_parameters": {
+    "spring_wheat": {
+      "water_demand_mm": 380,
+      "water_demand_notill_mm": 360,
+      "nitrogen_balance_kg_ha": -25,
+      "soil_health_delta": -5,
+      "yield_profit_score": 85,
+      "cost_score": 55,
+      "drought_tolerance": 3.0,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "winter_wheat": {
+      "water_demand_mm": 390,
+      "water_demand_notill_mm": 370,
+      "nitrogen_balance_kg_ha": -25,
+      "soil_health_delta": -4,
+      "yield_profit_score": 88,
+      "cost_score": 58,
+      "drought_tolerance": 3.5,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "spring_barley": {
+      "water_demand_mm": 280,
+      "water_demand_notill_mm": 270,
+      "nitrogen_balance_kg_ha": -15,
+      "soil_health_delta": 4,
+      "yield_profit_score": 75,
+      "cost_score": 45,
+      "drought_tolerance": 4.0,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "oats": {
+      "water_demand_mm": 320,
+      "water_demand_notill_mm": 305,
+      "nitrogen_balance_kg_ha": -20,
+      "soil_health_delta": 2,
+      "yield_profit_score": 70,
+      "cost_score": 40,
+      "drought_tolerance": 2.5,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "maize_corn": {
+      "water_demand_mm": 450,
+      "water_demand_notill_mm": 430,
+      "nitrogen_balance_kg_ha": -40,
+      "soil_health_delta": -8,
+      "yield_profit_score": 90,
+      "cost_score": 75,
+      "drought_tolerance": 3.0,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "millet": {
+      "water_demand_mm": 220,
+      "water_demand_notill_mm": 210,
+      "nitrogen_balance_kg_ha": -12,
+      "soil_health_delta": 3,
+      "yield_profit_score": 68,
+      "cost_score": 35,
+      "drought_tolerance": 4.8,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "sorghum": {
+      "water_demand_mm": 250,
+      "water_demand_notill_mm": 240,
+      "nitrogen_balance_kg_ha": -15,
+      "soil_health_delta": 4,
+      "yield_profit_score": 72,
+      "cost_score": 38,
+      "drought_tolerance": 5.0,
+      "is_legume": false,
+      "root_type": "fibrous"
+    },
+    "sunflower": {
+      "water_demand_mm": 460,
+      "water_demand_notill_mm": 440,
+      "nitrogen_balance_kg_ha": -35,
+      "soil_health_delta": -9,
+      "yield_profit_score": 92,
+      "cost_score": 65,
+      "drought_tolerance": 3.8,
+      "is_legume": false,
+      "root_type": "taproot"
+    },
+    "safflower": {
+      "water_demand_mm": 260,
+      "water_demand_notill_mm": 250,
+      "nitrogen_balance_kg_ha": -15,
+      "soil_health_delta": 5,
+      "yield_profit_score": 78,
+      "cost_score": 42,
+      "drought_tolerance": 4.9,
+      "is_legume": false,
+      "root_type": "taproot"
+    },
+    "spring_rapeseed": {
+      "water_demand_mm": 350,
+      "water_demand_notill_mm": 335,
+      "nitrogen_balance_kg_ha": -30,
+      "soil_health_delta": -4,
+      "yield_profit_score": 86,
+      "cost_score": 68,
+      "drought_tolerance": 2.5,
+      "is_legume": false,
+      "root_type": "taproot"
+    },
+    "flax_linseed": {
+      "water_demand_mm": 290,
+      "water_demand_notill_mm": 280,
+      "nitrogen_balance_kg_ha": -10,
+      "soil_health_delta": 5,
+      "yield_profit_score": 84,
+      "cost_score": 50,
+      "drought_tolerance": 3.8,
+      "is_legume": false,
+      "root_type": "taproot"
+    },
+    "chickpea": {
+      "water_demand_mm": 240,
+      "water_demand_notill_mm": 230,
+      "nitrogen_balance_kg_ha": 35,
+      "soil_health_delta": 13,
+      "yield_profit_score": 82,
+      "cost_score": 45,
+      "drought_tolerance": 4.5,
+      "is_legume": true,
+      "root_type": "taproot"
+    },
+    "lentil": {
+      "water_demand_mm": 230,
+      "water_demand_notill_mm": 220,
+      "nitrogen_balance_kg_ha": 30,
+      "soil_health_delta": 11,
+      "yield_profit_score": 80,
+      "cost_score": 44,
+      "drought_tolerance": 3.7,
+      "is_legume": true,
+      "root_type": "taproot"
+    },
+    "pea": {
+      "water_demand_mm": 270,
+      "water_demand_notill_mm": 260,
+      "nitrogen_balance_kg_ha": 25,
+      "soil_health_delta": 10,
+      "yield_profit_score": 76,
+      "cost_score": 48,
+      "drought_tolerance": 2.8,
+      "is_legume": true,
+      "root_type": "taproot"
+    },
+    "alfalfa": {
+      "water_demand_mm": 420,
+      "water_demand_notill_mm": 400,
+      "nitrogen_balance_kg_ha": 45,
+      "soil_health_delta": 16,
+      "yield_profit_score": 74,
+      "cost_score": 40,
+      "drought_tolerance": 4.5,
+      "is_legume": true,
+      "root_type": "taproot"
+    },
+    "cotton": {
+      "water_demand_mm": 550,
+      "water_demand_notill_mm": 520,
+      "nitrogen_balance_kg_ha": -45,
+      "soil_health_delta": -12,
+      "yield_profit_score": 88,
+      "cost_score": 80,
+      "drought_tolerance": 3.8,
+      "is_legume": false,
+      "root_type": "taproot"
+    }
   }
 }

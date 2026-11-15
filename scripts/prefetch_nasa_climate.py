@@ -81,7 +81,10 @@ def prefetch_region(region: str, years: list[int], force: bool, validate: bool =
         # Save after every season so an interrupted prefetch is resumable.
         rows.append(row)
         summary = gee.build_climate_summary(rows)
-        gee.save_cached_climate(region, rows, summary)
+        # Keep the previous POWER check so an interrupted run never drops it.
+        gee.save_cached_climate(
+            region, rows, summary, validation=(cached or {}).get("validation")
+        )
         print(
             f"[{region}] {row['year']}: "
             f"ET={row['gldas_evapotranspiration_mm']:.1f} mm, "

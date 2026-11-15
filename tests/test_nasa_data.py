@@ -227,6 +227,13 @@ def _power_daily(year, precip_per_day, et_per_day, drop_last=False, fill_day=Non
     return {gc.POWER_PRECIP_PARAM: precip, gc.POWER_ET_PARAM: et}
 
 
+def _load_prefetch():
+    spec = importlib.util.spec_from_file_location("prefetch", ROOT / "scripts/prefetch_nasa_climate.py")
+    prefetch = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(prefetch)
+    return prefetch
+
+
 class TestPowerCrossCheck(unittest.TestCase):
     def test_season_sum_ignores_days_outside_april_september(self):
         totals = gc.aggregate_power_seasons(_power_daily(2021, 1.0, 2.0))
@@ -265,10 +272,26 @@ class TestPowerCrossCheck(unittest.TestCase):
         self.assertIn("end=20210930", url)
         self.assertEqual(totals[2021]["precipitation_mm"], 183.0)
 
+    def test_interrupted_prefetch_keeps_validation(self):
+        prefetch = _load_prefetch()
+        new_row = dict(SAMPLE_ROWS[1], year=2023)
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(gc, "CACHE_DIR", Path(tmp)):
+                gc.save_cached_climate("sko", SAMPLE_ROWS, validation={"years": [2021, 2022]})
+
+                def fetch_then_crash(region, years, on_row=None):
+                    on_row(new_row)
+                    raise KeyboardInterrupt
+
+                with mock.patch.object(gc, "fetch_nasa_climate_series", side_effect=fetch_then_crash):
+                    with self.assertRaises(KeyboardInterrupt):
+                        prefetch.prefetch_region("sko", [2023], force=False)
+                cached = gc.load_cached_climate("sko")
+                self.assertEqual([row["year"] for row in cached["years"]], [2021, 2022, 2023])
+                self.assertEqual(cached["validation"], {"years": [2021, 2022]})
+
     def test_prefetch_reuses_cached_validation_offline(self):
-        spec = importlib.util.spec_from_file_location("prefetch", ROOT / "scripts/prefetch_nasa_climate.py")
-        prefetch = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(prefetch)
+        prefetch = _load_prefetch()
         cached = {"validation": {"years": [2021, 2022], "centroid_lat_lon": [54.0, 69.0]}}
         with mock.patch.object(gc, "fetch_power_seasons", side_effect=AssertionError("no network")):
             self.assertIs(

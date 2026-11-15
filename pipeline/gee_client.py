@@ -308,10 +308,10 @@ def load_cached_climate(region: str, cache_dir: Path | str | None = None) -> dic
         return None
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except (OSError, ValueError):
         LOGGER.warning("Ignoring unreadable NASA cache %s", path)
         return None
-    if data.get("schema_version") != CACHE_SCHEMA_VERSION:
+    if not isinstance(data, dict) or data.get("schema_version") != CACHE_SCHEMA_VERSION:
         return None
     if data.get("region") != _normalise_region(region):
         return None
@@ -319,6 +319,16 @@ def load_cached_climate(region: str, cache_dir: Path | str | None = None) -> dic
     if not isinstance(summary, dict) or set(summary) != set(CONTRACT_CLIMATE_KEYS):
         return None
     if summary.get("climate_stress_level") not in STRESS_LEVELS:
+        return None
+    for name in CONTRACT_CLIMATE_KEYS[:3]:
+        value = summary[name]
+        if type(value) not in (int, float) or not math.isfinite(value):
+            return None
+    if not 0 <= summary["nasa_smap_moisture_m3m3"] <= 1:
+        return None
+    if summary["nasa_gldas_evapotranspiration_mm"] <= 0:
+        return None
+    if summary["nasa_imerg_precipitation_mm"] < 0:
         return None
     if not isinstance(data.get("years"), list) or not data["years"]:
         return None
@@ -543,15 +553,14 @@ def get_nasa_climate_series(region: str) -> list[dict]:
     return rows
 
 
-def get_nasa_climate_summary(region: str) -> dict:
-    """Return exactly the contract climate keys for one region.
-
-    Cache-first by design: the offline demo never depends on Earth Engine.
-    """
+def get_nasa_climate_summary(region: str, *, allow_live: bool = True) -> dict:
+    """Return contract climate data; disable live fetching for cache-only requests."""
     key = _normalise_region(region)
     cached = load_cached_climate(key)
     if cached is not None:
         return {name: cached["summary"][name] for name in CONTRACT_CLIMATE_KEYS}
+    if not allow_live:
+        raise NasaDataUnavailable(f"No valid NASA cache for {key}")
 
     try:
         rows = fetch_nasa_climate_series(key)
